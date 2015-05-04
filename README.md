@@ -21,8 +21,8 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
     Options:
       --version             show program's version number and exit
       -h, --help            show this help message and exit
-      -e EAVESDROP_IN, --eavesdrop-in=EAVESDROP_IN
-                            Channel to eavesdrop in (default %%Root)
+      -a AFK_CHANNEL, --afk-channel=AFK_CHANNEL
+                            Designated AFK channel name
       -s SERVER, --server=SERVER
                             Host to connect to (default localhost)
       -p PORT, --port=PORT  Port to connect to (default 64738)
@@ -35,8 +35,6 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
       -c CERTIFICATE, --certificate=CERTIFICATE
                             Certificate file for the bot to use when connecting to
                             the server (.pem)
-      -a AFK_CHANNEL, --afk-channel=AFK_CHANNEL
-                            Designated AFK channel name
       -i IDLE_TIME, --idle-time=IDLE_TIME
                             Time (in minutes) before user is moved to the AFK
                             channel
