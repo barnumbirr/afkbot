@@ -1,5 +1,5 @@
 # AFKBot #
-Copyright (C) 2013-2015 Charles Ricketts  &lt;chuck.the.pc.guy@gmail.com&gt;
+Copyright (C) 2013-2022 Charles Ricketts  &lt;chuck.the.pc.guy@gmail.com&gt;
 
 ### Purpose ###
 Unlike other voice chat clients, Mumble does not provide a mechanism to specify an AFK channel or timeout. So, I made a bot script that takes care of this for me. Though I am releasing this script in 2015, I have been using it without problems for a couple of years now. For my uses in a moderately trafficked Mumble server, it has been very stable.
@@ -10,28 +10,22 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
 * While in the AFK channel, if a user talks they are removed from the AFK channel.
 
 ### Prerequisites ###
-1. Python SSL, Python 2.6+ has this built in. Otherwise, it's available from http://pypi.python.org/pypi/ssl/
+1. Python 3
 2. Mumble_pb2.py, prebuilt. If changes are made to the Mumble protocol in the future, a new Mumble_pb2.py may have to be generated. In order to build this file requires the Google Protobuffer tools located at http://code.google.com/apis/protocolbuffers/. Once installed, run `protoc python_out=[dir] Mumble.proto`. Mumble.proto is available from the Mumble source or Git repository.
+3. PEM-format user certificate. By default, Mumble generates a PCKS#12 certificate that must be converted to PEM format for use by the bot script. In order to convert a PKCS#12 certificate into PEM format using OpenSSL, use the following command: `openssl pkcs12 -in cert.p12 -out cert.pem -nodes`
 
 ### Arguments ###
-    Usage: 	afkbot.py
-    
-    Mumble 1.2 AFKBot
-    
+    Mumble 1.4 AFKBot
+
     Options:
-      --version             show program's version number and exit
-      -h, --help            show this help message and exit
+      --version             Show program's version number and exit
+      -h, --help            Show this help message and exit
       -a AFK_CHANNEL, --afk-channel=AFK_CHANNEL
                             Designated AFK channel name
       -s SERVER, --server=SERVER
                             Host to connect to (default localhost)
       -p PORT, --port=PORT  Port to connect to (default 64738)
       -n NICK, --nick=NICK  Nickname for the eavesdropper (default AFKBot2)
-      -d DELAY, --delay=DELAY
-                            Time to delay response by in seconds (default 0)
-      -l LIMIT, --limit=LIMIT
-                            Maximum response per minutes (default 0, 0 =
-                            unlimited)
       -c CERTIFICATE, --certificate=CERTIFICATE
                             Certificate file for the bot to use when connecting to
                             the server (.pem)
@@ -41,10 +35,12 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
       -v, --verbose         Outputs and translates all messages received from the
                             server
       --password=PASSWORD   Password for server, if any
+      -S, --allow-self-signed
+                            Allow self-signed server certificates
 
 ### License ###
 
-    Copyright (c) 2015, Charles Ricketts <chuck.the.pc.guy@gmail.com>
+    Copyright (c) 2022, Charles Ricketts <chuck.the.pc.guy@gmail.com>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
