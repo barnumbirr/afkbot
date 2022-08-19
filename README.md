@@ -14,6 +14,14 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
 2. Mumble_pb2.py, prebuilt. If changes are made to the Mumble protocol in the future, a new Mumble_pb2.py may have to be generated. In order to build this file requires the Google Protobuffer tools located at http://code.google.com/apis/protocolbuffers/. Once installed, run `protoc python_out=[dir] Mumble.proto`. Mumble.proto is available from the Mumble source or Git repository.
 3. PEM-format user certificate. By default, Mumble generates a PCKS#12 certificate that must be converted to PEM format for use by the bot script. In order to convert a PKCS#12 certificate into PEM format using OpenSSL, use the following command: `openssl pkcs12 -in cert.p12 -out cert.pem -nodes`
 
+### Fly.io
+
+```bash
+$ fly apps create mumble-afkbot
+$ fly secrets set PASSWORD="secure_password"
+$ fly deploy --remote-only --config fly.toml
+```
+
 ### Arguments ###
     Mumble 1.4 AFKBot
 
