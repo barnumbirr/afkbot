@@ -1,1 +1,5 @@
+__pycache__/
+certs/
 *.pyc
+mumblebot.log
+server.pem

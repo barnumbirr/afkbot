@@ -91,7 +91,7 @@ except:
     print(warning)
     sys.exit(1)
 
-import importlib
+import importlib.util
 if importlib.util.find_spec('google') == None or importlib.util.find_spec("google.protobuf") == None:
     print("ERROR: Google protobuf library not found. This can be installed via 'pip install protobuf'")
     sys.exit(1)
