@@ -18,7 +18,11 @@ Unlike other voice chat clients, Mumble does not provide a mechanism to specify 
 
 ```bash
 $ fly apps create mumble-afkbot
+$ flyctl regions set fra
 $ fly secrets set PASSWORD="secure_password"
+$ openssl req -new -x509 -nodes -out certs/mumble.crt -keyout certs/mumble.key -days 10957
+$ openssl pkcs12 -export -in certs/mumble.crt -inkey certs/mumble.key -out certs/mumble.pfx
+$ openssl pkcs12 -in certs/mumble.pfx -out certs/mumble.pem -nodes
 $ fly deploy --remote-only --config fly.toml
 ```
 

@@ -8,5 +8,5 @@ app = "mumble-afkbot"
   SERVER="mumble.example.compile"
   PORT="64738"
   NICK="afkbot"
-  CERTIFICATE="certs/cert.pem"
+  CERTIFICATE="certs/mumble.pem
   IDLE_TIME="15"
